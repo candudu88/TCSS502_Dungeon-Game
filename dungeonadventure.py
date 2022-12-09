@@ -61,40 +61,40 @@ current_y = 0
 my_map.rooms[0][0]._pit = True
 
 def draw_image(x, y):
-    room = my_map.get_room()
+    room = my_map.get_room()[x][y]
     if 0 > x or x >= my_map.rows or 0 > y or y >= my_map.cols:
         return
-    if room[x][y]._exit:
+    if room._exit:
         window['Graph'].draw_image(filename='images/pit.png', location=(y * 60, 360 - x * 60))
-    elif room[x][y]._pit:
+    elif room._pit:
         window['Graph'].draw_image(filename='images/pit.png', location=(y * 60, 360 - x * 60))
-    elif room[x][y].south and room[x][y].west and room[x][y].east:
+    elif room.south and room.west and room.east:
         window['Graph'].draw_image(filename='images/T1.png', location=(y * 60, 360 - x * 60))
-    elif room[x][y].north and room[x][y].south and room[x][y].west:
+    elif room.north and room.south and room.west:
         window['Graph'].draw_image(filename='images/T2.png', location=(y * 60, 360 - x * 60))
-    elif room[x][y].north and room[x][y].south and room[x][y].east:
+    elif room.north and room.south and room.east:
         window['Graph'].draw_image(filename='images/T3.png', location=(y * 60, 360 - x * 60))
-    elif room[x][y].north and room[x][y].west and room[x][y].east:
+    elif room.north and room.west and room.east:
         window['Graph'].draw_image(filename='images/T4.png', location=(y * 60, 360 - x * 60))
-    elif room[x][y].north and room[x][y].west:
+    elif room.north and room.west:
         window['Graph'].draw_image(filename='images/L1.png', location=(y * 60, 360 - x * 60))
-    elif room[x][y].north and room[x][y].east:
+    elif room.north and room.east:
         window['Graph'].draw_image(filename='images/L2.png', location=(y * 60, 360 - x * 60))
-    elif room[x][y].north and room[x][y].south:
+    elif room.north and room.south:
         window['Graph'].draw_image(filename='images/L3.png', location=(y * 60, 360 - x * 60))
-    elif room[x][y].west and room[x][y].east:
+    elif room.west and room.east:
         window['Graph'].draw_image(filename='images/L4.png', location=(y * 60, 360 - x * 60))
-    elif room[x][y].west and room[x][y].south:
+    elif room.west and room.south:
         window['Graph'].draw_image(filename='images/L5.png', location=(y * 60, 360 - x * 60))
-    elif room[x][y].east and room[x][y].south:
+    elif room.east and room.south:
         window['Graph'].draw_image(filename='images/L6.png', location=(y * 60, 360 - x * 60))
-    elif room[x][y].south:
+    elif room.south:
         window['Graph'].draw_image(filename='images/S1.png', location=(y * 60, 360 - x * 60))
-    elif room[x][y].west:
+    elif room.west:
         window['Graph'].draw_image(filename='images/S2.png', location=(y * 60, 360 - x * 60))
-    elif room[x][y].north:
+    elif room.north:
         window['Graph'].draw_image(filename='images/S3.png', location=(y * 60, 360 - x * 60))
-    elif room[x][y].east:
+    elif room.east:
         window['Graph'].draw_image(filename='images/S4.png', location=(y * 60, 360 - x * 60))
     # elif room.south and room.west and room.east:
     #     window['Graph'].draw_image(filename='images/T1.png', location=(y * 60, 360 - x * 60))

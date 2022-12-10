@@ -26,66 +26,69 @@ print()
 
 print(my_map.rooms[0][0])
 
-
-def intro():
-    print("Welcome to Dungeon Adventure!\n"
-          "\n"
-          "We need you to explore the dungeon and find the four pillars of OOP.\n"
-          "Your goal:\n"
-          "\t1) Collect all the four pillars of OOP\n"
-          "\t2) Get to the exit safely.\n"
-          "\n"
-          "Items randomly placed in each room:\n"
-          "\t1) Healing potion(random heal amount),\n"
-          "\t2) Vision potion(reveal, adjacent rooms)\n"
-          "\t3) Pit(random damage to adventurer),\n"
-          "\t4) OOP pillars(\"A\",\"P\",\"I\",\"E\"\n"
-          "\n"
-          "Are you ready to play?!!!\n"
-          "\n"
-          "\'c\' : for continue\n"
-          "\'q\' : for quit\n"
-          "\n")
-
-
-def ask_to_play():
-    choice = input("Your choice: ")
-    while not (choice.startswith("c") or choice.startswith("q")):
-        print("Sorry not an option, please type one of the options.\n"
-              "\'c\' : for continue\n"
-              "\'q\' : for quit\n"
-              "\n")
-        choice = input("Your choice: ")
-    if choice.startswith("c"):
-        return True
-    else:
-        return False
-
-
-def ask_for_name():
-    player_name = input("What is your name? ")
-    return player_name
+# def intro():
+#     print("Welcome to Dungeon Adventure!\n"
+#           "\n"
+#           "We need you to explore the dungeon and find the four pillars of OOP.\n"
+#           "Your goal:\n"
+#           "\t1) Collect all the four pillars of OOP\n"
+#           "\t2) Get to the exit safely.\n"
+#           "\n"
+#           "Items randomly placed in each room:\n"
+#           "\t1) Healing potion(random heal amount),\n"
+#           "\t2) Vision potion(reveal, adjacent rooms)\n"
+#           "\t3) Pit(random damage to adventurer),\n"
+#           "\t4) OOP pillars(\"A\",\"P\",\"I\",\"E\"\n"
+#           "\n"
+#           "Are you ready to play?!!!\n"
+#           "\n"
+#           "\'c\' : for continue\n"
+#           "\'q\' : for quit\n"
+#           "\n")
+#
+#
+# def ask_to_play():
+#     choice = input("Your choice: ")
+#     while not (choice.startswith("c") or choice.startswith("q")):
+#         print("Sorry not an option, please type one of the options.\n"
+#               "\'c\' : for continue\n"
+#               "\'q\' : for quit\n"
+#               "\n")
+#         choice = input("Your choice: ")
+#     if choice.startswith("c"):
+#         return True
+#     else:
+#         return False
 
 
-intro()
-should_play = ask_to_play()
-if should_play:
-    name = ask_for_name()
-    adventurer = Adventurer(name)
-    print(f"Good luck {name}!")
-    print(adventurer)
+# def ask_for_name():
+#     player_name = input("What is your name? ")
+#     return player_name
 
+
+# intro()
+# should_play = ask_to_play()
+# if should_play:
+#     name = ask_for_name()
+#     adventurer = Adventurer(name)
+#     print(f"Good luck {name}!")
+#     print(adventurer)
 
 
 AppFont = 'Any 16'
 psg.theme('DarkAmber')
 layout = [[(psg.Graph((360, 360), (0, 0), (360, 360), key='Graph'))],
-          [psg.Text('Player: '+ str(ad.hit_point), key='-P1-', text_color='red')],
-          [psg.Text('Hit point: ' , key='-P1-', text_color='white')],
-          [psg.Text('Healing potion: ' , key='-P1-', text_color='white'), psg.Button('NewMaze', font=AppFont)],
-          [psg.Text('vision potion:        ' , key='-P1-', text_color='white'), psg.Text('', key='-P5-', text_color='white') ],
+          [psg.Text('Player: ' + str(ad.hit_point), key='-P1-', text_color='red')],
+          [psg.Text('Hit point: ', key='-P1-', text_color='white')],
+          [psg.Text('Healing potion: ', key='-P1-', text_color='white'), psg.Button('NewMaze', font=AppFont)],
+          [psg.Text('vision potion:        ', key='-P1-', text_color='white'),
+           psg.Text('', key='-P5-', text_color='white')],
           ]
 window = psg.Window('Dungeon Adventure', layout, resizable=True, finalize=True, return_keyboard_events=True)
+
+# current_x = 1
+# current_y = 1
+
 
 def checkEvents(event):
     move = ''
@@ -119,30 +122,6 @@ def checkEvents(event):
     return move
 
 
-current_x = 0
-current_y = 0
-# my_map.rooms[0][0]._exit = True
-
-
-def draw_image(x, y):
-    room = my_map.get_room()[x][y]
-    if 0 > x or x >= my_map.rows or 0 > y or y >= my_map.cols:
-        return
-    if room._exit:
-        window['Graph'].draw_image(filename='images/pit.png', location=(y * 60, 360 - x * 60))
-    elif room._pit:
-
-# my_map.rooms[1][1]._pit = True
-# my_map.rooms[1][1].set_exit(True)
-# my_map.rooms[1][1].set_pillar("Abstraction")
-# my_map.rooms[2][2].set_health_potion(True)
-# my_map.rooms[3][3].set_vision_potion(True)
-# my_map.rooms[4][4].set_pillar("Abstraction")
-#
-# my_map.rooms[5][5].set_pillar("Polymorphism")
-# print(my_map.rooms[0][0])
-
-# window = ini_game()
 exit_count = 1
 entrance_count = 1
 A_count = 1
@@ -153,7 +132,7 @@ healing_potion_count = math.floor(0.1 * 6 * 6)
 vision_potion_count = math.floor(0.1 * 6 * 6)
 pit_count = math.floor(0.1 * 6 * 6)
 total_count = exit_count + entrance_count + A_count + E_count + I_count + P_count + healing_potion_count + vision_potion_count + pit_count
-random_list = random.sample(range(0,35), total_count)
+random_list = random.sample(range(0, 35), total_count)
 print(random_list)
 
 for n in random_list:
@@ -191,10 +170,6 @@ for n in random_list:
         pit_count -= 1
 
 
-
-
-
-
 def draw_image(x, y, my_map):
     room = my_map.get_room()
     if 0 > x or x >= my_map.rows or 0 > y or y >= my_map.cols:
@@ -203,33 +178,33 @@ def draw_image(x, y, my_map):
         window['Graph'].draw_image(filename='images/exit.png', location=(y * 60, 360 - x * 60))
     elif room[x][y]._pit:
         window['Graph'].draw_image(filename='images/pit.png', location=(y * 60, 360 - x * 60))
-    elif room.south and room.west and room.east:
+    elif room[x][y].south and room[x][y].west and room[x][y].east:
         window['Graph'].draw_image(filename='images/T1.png', location=(y * 60, 360 - x * 60))
-    elif room.north and room.south and room.west:
+    elif room[x][y].north and room[x][y].south and room[x][y].west:
         window['Graph'].draw_image(filename='images/T2.png', location=(y * 60, 360 - x * 60))
-    elif room.north and room.south and room.east:
+    elif room[x][y].north and room[x][y].south and room[x][y].east:
         window['Graph'].draw_image(filename='images/T3.png', location=(y * 60, 360 - x * 60))
-    elif room.north and room.west and room.east:
+    elif room[x][y].north and room[x][y].west and room[x][y].east:
         window['Graph'].draw_image(filename='images/T4.png', location=(y * 60, 360 - x * 60))
-    elif room.north and room.west:
+    elif room[x][y].north and room[x][y].west:
         window['Graph'].draw_image(filename='images/L1.png', location=(y * 60, 360 - x * 60))
-    elif room.north and room.east:
+    elif room[x][y].north and room[x][y].east:
         window['Graph'].draw_image(filename='images/L2.png', location=(y * 60, 360 - x * 60))
-    elif room.north and room.south:
+    elif room[x][y].north and room[x][y].south:
         window['Graph'].draw_image(filename='images/L3.png', location=(y * 60, 360 - x * 60))
-    elif room.west and room.east:
+    elif room[x][y].west and room[x][y].east:
         window['Graph'].draw_image(filename='images/L4.png', location=(y * 60, 360 - x * 60))
-    elif room.west and room.south:
+    elif room[x][y].west and room[x][y].south:
         window['Graph'].draw_image(filename='images/L5.png', location=(y * 60, 360 - x * 60))
-    elif room.east and room.south:
+    elif room[x][y].east and room[x][y].south:
         window['Graph'].draw_image(filename='images/L6.png', location=(y * 60, 360 - x * 60))
-    elif room.south:
+    elif room[x][y].south:
         window['Graph'].draw_image(filename='images/S1.png', location=(y * 60, 360 - x * 60))
-    elif room.west:
+    elif room[x][y].west:
         window['Graph'].draw_image(filename='images/S2.png', location=(y * 60, 360 - x * 60))
-    elif room.north:
+    elif room[x][y].north:
         window['Graph'].draw_image(filename='images/S3.png', location=(y * 60, 360 - x * 60))
-    elif room.east:
+    elif room[x][y].east:
         window['Graph'].draw_image(filename='images/S4.png', location=(y * 60, 360 - x * 60))
     if room[x][y].get_health_potion() and room[x][y].get_vision_potion():
         window['Graph'].draw_image(filename='images/H.png', location=(y * 60, 360 - x * 60))
@@ -249,35 +224,6 @@ def draw_image(x, y, my_map):
         window['Graph'].draw_image(filename='images/P.png', location=(y * 60, 360 - x * 60))
 
 
-
-while True:
-    event, values = window.read()
-    # if checkEvents(event) == 'Up':
-    #     window['Graph'].draw_image(filename='images/map.png', location=(60, 120))
-    old_x = current_x
-    old_y = current_y
-    current_room = my_map.get_room()[current_x][current_y]
-    if current_room.north and checkEvents(event) == 'Up' and current_x - 1 >= 0:
-        current_x = current_x - 1
-    elif current_room.south and checkEvents(event) == 'Down' and current_x + 1 < my_map.cols:
-        current_x = current_x + 1
-    elif current_room.west and checkEvents(event) == 'Left' and current_y - 1 >= 0:
-        current_y = current_y - 1
-    elif current_room.east and checkEvents(event) == 'Right' and current_y + 1 < my_map.rows:
-        current_y = current_y + 1
-    elif checkEvents(event) == 'V':
-        draw_image(current_x, current_y + 1)
-        draw_image(current_x, current_y - 1)
-        draw_image(current_x + 1, current_y)
-        draw_image(current_x - 1, current_y)
-        draw_image(current_x + 1, current_y + 1)
-        draw_image(current_x - 1, current_y + 1)
-        draw_image(current_x + 1, current_y - 1)
-        draw_image(current_x - 1, current_y - 1)
-
-    # print(my_map.get_room()[current_x][current_y])
-    draw_image(current_x, current_y)
-
 def dungeonadventure_test():
     current_x = 1
     current_y = 1
@@ -285,19 +231,20 @@ def dungeonadventure_test():
     window['Graph'].draw_image(filename='images/Huntress.png', location=(current_y * 60, 360 - current_x * 60))
     while True:
         event, values = window.read()
-
         old_x = current_x
         old_y = current_y
         if my_map.get_room()[current_x][current_y].north and checkEvents(event) == 'Up' and current_x - 1 >= 0:
             current_x = current_x - 1
-        elif my_map.get_room()[current_x][current_y].south and checkEvents(event) == 'Down' and current_x + 1 < my_map.cols:
+        elif my_map.get_room()[current_x][current_y].south and checkEvents(
+                event) == 'Down' and current_x + 1 < my_map.cols:
             current_x = current_x + 1
             ad.hit_point -= 1
             window['-P1-'].update(str(ad.hit_point))
             window['-P5-'].update("Abstraction")
         elif my_map.get_room()[current_x][current_y].west and checkEvents(event) == 'Left' and current_y - 1 >= 0:
             current_y = current_y - 1
-        elif my_map.get_room()[current_x][current_y].east and checkEvents(event) == 'Right' and current_y + 1 < my_map.rows:
+        elif my_map.get_room()[current_x][current_y].east and checkEvents(
+                event) == 'Right' and current_y + 1 < my_map.rows:
             current_y = current_y + 1
         elif checkEvents(event) == 'V':
             draw_image(current_x, current_y + 1, my_map)

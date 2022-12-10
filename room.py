@@ -124,8 +124,6 @@ class Room:
     def set_pillar(self, pillar):
         self._pillar = pillar
 
-    def get_pillar(self):
-        return self._pillar
 
     def __repr__(self):
         return str(self)
@@ -172,20 +170,11 @@ class Room:
     def set_visited(self, visited):
         self._visited = visited
 
-    def set_impassible(self, is_impassable):
-        self.__impassable = is_impassable
 
-    def set_exit(self):
-        self._exit = True
 
-    def set_pillar(self):
-        self.__hasPillar = True
-
-    def set_pit(self):
-        self._pit = True
 
     def get_has_pit(self):
-        return self._pit
+        return self._pitc
 
 
 

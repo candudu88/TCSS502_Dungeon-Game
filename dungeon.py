@@ -7,14 +7,11 @@ class Dungeon:
     def __init__(self, rows, cols):
         self.rows = rows
         self.cols = cols
-        self.pillars = ["A", "E", "I", "P"]
         self.rooms = []
         for i in range(rows):
             self.rooms.append([])
             for j in range(cols):
                 self.rooms[i].append(Room(i, j))
-
-        self.generate_maze()
 
     def get_room(self):
         return self.rooms
@@ -65,7 +62,7 @@ class Dungeon:
             current.north = True
             neighbor.south = True
 
-    def generate_maze(self):
+    def generate(self):
         source = self.rooms[0][0]
         target = self.rooms[self.rows - 1][self.cols - 1]
         stack = []
@@ -87,42 +84,3 @@ class Dungeon:
                 self.create_doors(current, neighbor)
             else:
                 stack.pop()
-
-        # place health potions, vision potions, pits, pillars, entrance and exit
-        for i in range(0, len(self.rooms)):
-            for j in range(0, len(self.rooms[i])):
-                self.set_health_potion(i, j)
-                self.set_vision_potion(i, j)
-                self.set_pillar(i, j)
-                self.set_pit(i, j)
-        self.set_entrance()
-        self.set_exit()
-
-    def set_health_potion(self, row, col):
-        if row != 0 and col != 0 and row != len(self.rooms) - 1 and col != len(self.rooms[row]) - 1:
-            r = random.randint(1, 10)
-            if r == 1:
-                self.rooms[row][col].set_health(True)
-
-    def set_vision_potion(self, row, col):
-        if row != 0 and col != 0 and row != len(self.rooms) - 1 and col != len(self.rooms[row]) - 1:
-            r = random.randint(1, 10)
-            if r == 1:
-                self.rooms[row][col].set_vision(True)
-
-    def set_pit(self, row, col):
-        if row != 0 and col != 0 and row != len(self.rooms) - 1 and col != len(self.rooms[row]) - 1:
-            r = random.randint(1, 10)
-            if r == 4:
-                self.rooms[row][col].set_pit()
-
-    def set_entrance(self):
-        self.rooms[0][0].set_entrance()
-
-    def set_exit(self):
-        self.rooms[-1][-1].set_exit()
-
-    def set_pillar(self, row, col):
-        if row != 0 and col != 0 and row != len(self.rooms) - 1 and col != len(self.rooms[row]) - 1:
-            self.rooms[row][-1].set_pillar()
-

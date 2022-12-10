@@ -13,18 +13,9 @@ global window
 
 ad = Adventurer("warrior")
 my_map = Dungeon(6, 6)  # assume the rows and columns must be greater than 1
+my_map.generate()
 my_map.print()
 my_map.draw()
-
-# test if rooms have potions, pillars and pits
-# for i in range(0, 6):
-#     for j in range(0, 6):
-#         has_health_potion = my_map.rooms[i][j]._Room__healthPotion
-#         has_pillar = my_map.rooms[i][j]._Room__hasPillar
-#         has_pit = my_map.rooms[i][j].get_has_pit()
-#         print(f"has health potion: {has_health_potion}")
-#         print(f"has pillar: {has_pillar}")
-#         print(f"has pit: {has_pit}")
 
 my_map.rooms[0][0].draw_top()
 print()
@@ -77,12 +68,12 @@ def ask_for_name():
 
 
 intro()
-# should_play = ask_to_play()
-# if should_play:
-#     name = ask_for_name()
-#     adventurer = Adventurer(name)
-#     print(f"Good luck {name}!")
-#     print(adventurer)
+should_play = ask_to_play()
+if should_play:
+    name = ask_for_name()
+    adventurer = Adventurer(name)
+    print(f"Good luck {name}!")
+    print(adventurer)
 
 
 

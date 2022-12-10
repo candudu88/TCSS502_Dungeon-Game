@@ -3,6 +3,7 @@ class Room:
         self.__healthPotion = False
         self.__visionPotion = False
         self.__pillar = "No pillar"
+        self.__hasPillar = False
         self._pit = False
         self._exit = False
         self.__entrance = False
@@ -58,6 +59,9 @@ class Room:
         # result += f"({self.row}, {self.col})"
         return result
 
+    def __repr__(self):
+        return str(self)
+
     def draw_top(self):
         if self.north:
             print("*   *", end="")
@@ -81,12 +85,11 @@ class Room:
         else:
             print("*****", end="")
 
-    def __repr__(self):
-        return str(self)
-
-
     def set_health(self, add_potion):
         self.__healthPotion = add_potion
+
+    def set_vision(self, add_vision):
+        self.__visionPotion = add_vision
 
     def can_enter(self):
         return not self.__impassable and not self.__visited
@@ -104,4 +107,15 @@ class Room:
         self.__impassable = is_impassable
 
     def set_exit(self):
-        self.__exit = True
+        self._exit = True
+
+    def set_pillar(self):
+        self.__hasPillar = True
+
+    def set_pit(self):
+        self._pit = True
+
+    def get_has_pit(self):
+        return self._pit
+
+

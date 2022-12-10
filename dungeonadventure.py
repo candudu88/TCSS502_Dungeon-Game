@@ -1,7 +1,7 @@
 from room import Room
-from dungeon import Dungeon
 import PySimpleGUI as psg
 from dungeon import Dungeon
+from adventurer import Adventurer
 
 my_map = Dungeon(6, 6)  # assume the rows and columns must be greater than 1
 my_map.generate()
@@ -17,11 +17,59 @@ print()
 
 print(my_map.rooms[0][0])
 
+
+def intro():
+    print("Welcome to Dungeon Adventure!\n"
+          "\n"
+          "We need you to explore the dungeon and find the four pillars of OOP.\n"
+          "Your goal:\n"
+          "\t1) Collect all the four pillars of OOP\n"
+          "\t2) Get to the exit safely.\n"
+          "\n"
+          "Items randomly placed in each room:\n"
+          "\t1) Healing potion(random heal amount),\n"
+          "\t2) Vision potion(reveal, adjacent rooms)\n"
+          "\t3) Pit(random damage to adventurer),\n"
+          "\t4) OOP pillars(\"A\",\"P\",\"I\",\"E\"\n"
+          "\n"
+          "Are you ready to play?!!!\n"
+          "\n"
+          "\'c\' : for continue\n"
+          "\'q\' : for quit\n"
+          "\n")
+
+
+def ask_to_play():
+    choice = input("Your choice: ")
+    while not (choice.startswith("c") or choice.startswith("q")):
+        print("Sorry not an option, please type one of the options.\n"
+              "\'c\' : for continue\n"
+              "\'q\' : for quit\n"
+              "\n")
+        choice = input("Your choice: ")
+    if choice.startswith("c"):
+        return True
+    else:
+        return False
+
+
+def ask_for_name():
+    player_name = input("What is your name? ")
+    return player_name
+
+
+intro()
+should_play = ask_to_play()
+if should_play:
+    name = ask_for_name()
+    adventurer = Adventurer(name)
+    print(f"Good luck {name}!")
+    print(adventurer)
+
 psg.theme('DarkAmber')
 layout = [[(psg.Graph((360, 360), (0, 0), (360, 360), key='Graph'))],
           [psg.Button('OK')]]
 window = psg.Window('Car Dashboard', layout, resizable=True, finalize=True, return_keyboard_events=True)
-
 
 
 def checkEvents(event):
@@ -112,13 +160,14 @@ while True:
     #     window['Graph'].draw_image(filename='images/map.png', location=(60, 120))
     old_x = current_x
     old_y = current_y
-    if my_map.get_room()[current_x][current_y].north and checkEvents(event) == 'Up' and current_x - 1 >= 0:
+    current_room = my_map.get_room()[current_x][current_y]
+    if current_room.north and checkEvents(event) == 'Up' and current_x - 1 >= 0:
         current_x = current_x - 1
-    elif my_map.get_room()[current_x][current_y].south and checkEvents(event) == 'Down' and current_x + 1 < my_map.cols:
+    elif current_room.south and checkEvents(event) == 'Down' and current_x + 1 < my_map.cols:
         current_x = current_x + 1
-    elif my_map.get_room()[current_x][current_y].west and checkEvents(event) == 'Left' and current_y - 1 >= 0:
+    elif current_room.west and checkEvents(event) == 'Left' and current_y - 1 >= 0:
         current_y = current_y - 1
-    elif my_map.get_room()[current_x][current_y].east and checkEvents(event) == 'Right' and current_y + 1 < my_map.rows:
+    elif current_room.east and checkEvents(event) == 'Right' and current_y + 1 < my_map.rows:
         current_y = current_y + 1
     elif checkEvents(event) == 'V':
         draw_image(current_x, current_y + 1)

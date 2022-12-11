@@ -7,6 +7,32 @@ class AdventurerTests(unittest.TestCase):
     """
     This class tests functionality Adventurer class.
     """
+    def test_adventurer_init(self):
+        """Test instance of Adventurer with only name"""
+        adventurer = Adventurer("Player")
+        attributes = {"name": adventurer._name,
+                      "hit_point": adventurer.hit_point,
+                      "number_healing_potions": adventurer._number_healing_potions,
+                      "number_vision_potions": adventurer._number_vision_potions}
+        expected_attributes = {"name": "Player",
+                               "hit_point": adventurer.hit_point,
+                               "number_healing_potions": 1,
+                               "number_vision_potions": 1}
+        self.assertDictEqual(expected_attributes, attributes, "expected attributes were not set")
+
+    def test_adventurer_init_with_potions(self):
+        """Test instance of Adventurer with healing and vision potion amounts"""
+        adventurer = Adventurer("Player", 2, 5)
+        attributes = {"name": adventurer._name,
+                      "hit_point": adventurer.hit_point,
+                      "number_healing_potions": adventurer._number_healing_potions,
+                      "number_vision_potions": adventurer._number_vision_potions}
+        expected_attributes = {"name": "Player",
+                               "hit_point": adventurer.hit_point,
+                               "number_healing_potions": 2,
+                               "number_vision_potions": 5}
+        self.assertDictEqual(expected_attributes, attributes, "expected attributes were not set")
+
     def test_get_name(self):
         """Test get_name method of Adventurer"""
         adventurer = Adventurer("Player", 1, 1)
@@ -15,7 +41,7 @@ class AdventurerTests(unittest.TestCase):
     def test_get_name_type(self):
         """Test type of returned value from get_name method of Adventurer"""
         adventurer = Adventurer(5, 1, 1)
-        # self.assertEqual("5", adventurer.get_name(), "expected type of string")
+        self.assertIsInstance("5", adventurer.get_name(), "expected name with type of string")
 
     def test_add_healing_potion(self):
         """Test add_healing_potion method of Adventurer"""
@@ -45,7 +71,8 @@ class AdventurerTests(unittest.TestCase):
         """Test __str__ method of Adventurer"""
         adventurer = Adventurer("Player", 1, 1)
         output_str = str(adventurer)
-        expected_str = "Name: "
+        hitpoint = str(adventurer.hit_point)
+        expected_str = f"Name: Player\nHit point: {hitpoint}\nTotal Healing Potion: 1\nTotal Vision Potion: 1\nList of Pillars Pieces Found: \n\n"
         self.assertEqual(expected_str, output_str, "expected different string format from __str__")
 
 

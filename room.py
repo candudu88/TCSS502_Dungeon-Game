@@ -6,7 +6,6 @@ class Room:
     def __init__(self, row, col):
         self.__healthPotion = False
         self.__visionPotion = False
-        self.__pillar = "No pillar"
         self.__hasPillar = False
         self._healthPotion = False
         self._visionPotion = False
@@ -21,46 +20,6 @@ class Room:
         self.south = False
         self.west = False
         self.east = False
-
-    # def __str__(self):
-    #     item_count = 0;
-    #     if self.__healthPotion:
-    #         item_count += 1
-    #     if self.__visionPotion:
-    #         item_count += 1
-    #
-    #
-    #     if item_count > 1:
-    #         return "M"
-    #
-    #     return "Health potion: " + str(self.__healthPotion) + "\n" \
-    #            + "Vision potion: " + str(self.__visionPotion) + "\n" \
-    #            + "Pillar: " + str(self.__pillar) + "\n" \
-    #            + "Pit: " + str(self.__pit) + "\n" \
-    #            + "Impassable: " + str(self.__impassable) + "\n" \
-    #            + "Entrance: " + str(self.__entrance) + "\n" \
-    #            + "Exit: " + str(self.__exit) + "\n\n"
-    # def __str__(self):
-    #     result = ""
-    #     if self.north:
-    #         result += "N"
-    #     else:
-    #         result += "_"
-    #     if self.south:
-    #         result += "S"
-    #     else:
-    #         result += "_"
-    #     if self.west:
-    #         result += "W"
-    #     else:
-    #         result += "_"
-    #     if self.east:
-    #         result += "E"
-    #     else:
-    #         result += "_"
-    #     result += " "
-    #     # result += f"({self.row}, {self.col})"
-    #     return result
 
     def __str__(self):
         """
@@ -186,9 +145,13 @@ class Room:
         """
         self._entrance = flag
 
+
+    def set_pillar(self, pillar):
+        self._pillar = pillar
+
+
     def __repr__(self):
         """
-
         :return: calling __str__ method.
         """
         return str(self)
@@ -228,8 +191,6 @@ class Room:
         else:
             print("*****", end="")
 
-    # def __repr__(self):
-    #     return str(self)
 
     def set_health(self, add_potion):
         """
@@ -277,9 +238,3 @@ class Room:
         return self._pit
 
 
-room = Room(0, 0)
-# room.set_pillar("Inheritance")
-room._entrance = True
-room._exit = True
-room._pit = True
-print(room)

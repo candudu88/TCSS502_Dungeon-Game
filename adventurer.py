@@ -22,6 +22,21 @@ class Adventurer:
         """
         return self._name
 
+    def set_number_healing_potions(self, cnt):
+        self._number_healing_potions = cnt
+
+    def reset_all_pillar(self):
+        self.pillar_A = False
+        self.pillar_E = False
+        self.pillar_I = False
+        self.pillar_P = False
+
+    def set_number_vision_potions(self, cnt):
+        self._number_vision_potions = cnt
+
+    def set_hit_point(self):
+        self.hit_point = random.randrange(75, 100)
+
     def add_healing_potion(self):
         """
         Method is used to add healing potion if user hit healing potion.
@@ -36,13 +51,20 @@ class Adventurer:
         """
         if self._number_healing_potions > 0:
             self._number_healing_potions -= 1
+            self.hit_point += random.randint(5, 15)
 
-    def add_vision(self):
+    def add_vision_potion(self):
         """
         Method is used to add vision potions.
         :return: vision potions.
         """
         self._number_vision_potions += 1
+
+    def get_vision_potion(self):
+        return self._number_vision_potions
+
+    def get_healing_potion(self):
+        return self._number_healing_potions
 
     def use_vision_potion(self):
         """
@@ -51,6 +73,10 @@ class Adventurer:
         """
         if self._number_vision_potions > 0:
             self._number_vision_potions -= 1
+
+    def damage_by_pit(self):
+        if self.hit_point > 0:
+            self.hit_point -= random.randint(1, 20)
 
     def __str__(self):
         """This method overrides the version from the object class and is called when you print a Adventurer"""
@@ -71,5 +97,3 @@ class Adventurer:
         return res
 
 
-ad = Adventurer("warrior")
-print(ad)

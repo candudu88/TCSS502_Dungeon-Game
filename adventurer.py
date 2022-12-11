@@ -5,6 +5,7 @@ class Adventurer:
     """
     class Adventurer is used to interact with class Dungeon.
     """
+
     def __init__(self, name, healing_potions=1, vision_potions=1):
         self._name = name
         self.hit_point = random.randrange(75, 100)
@@ -95,5 +96,3 @@ class Adventurer:
             res = res + "Polymorphism "
         res = res + "\n\n"
         return res
-
-

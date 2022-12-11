@@ -7,6 +7,7 @@ class RoomTests(unittest.TestCase):
     """
     This class tests functionality Room class.
     """
+
     def test_room_init(self):
         pass
 
@@ -131,6 +132,7 @@ class RoomTests(unittest.TestCase):
 
     def test_get_has_pit(self):
         pass
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -7,6 +7,7 @@ class AdventurerTests(unittest.TestCase):
     """
     This class tests functionality Adventurer class.
     """
+
     def test_adventurer_init(self):
         """Test instance of Adventurer with only name"""
         adventurer = Adventurer("Player")
@@ -41,7 +42,7 @@ class AdventurerTests(unittest.TestCase):
     def test_get_name_type(self):
         """Test type of returned value from get_name method of Adventurer"""
         adventurer = Adventurer(5, 1, 1)
-        self.assertIsInstance("5", adventurer.get_name(), "expected name with type of string")
+        self.assertEqual(False, isinstance(adventurer.get_name(), str), "expected name with type of string")
 
     def test_add_healing_potion(self):
         """Test add_healing_potion method of Adventurer"""
@@ -58,7 +59,7 @@ class AdventurerTests(unittest.TestCase):
     def test_add_vision(self):
         """Test add_vision method of Adventurer"""
         adventurer = Adventurer("Player", 1, 1)
-        adventurer.add_vision()
+        adventurer.add_vision_potion()
         self.assertEqual(2, adventurer._number_vision_potions, "expected 2 vision potions")
 
     def test_use_vision_potion(self):

@@ -14,6 +14,7 @@ class Room:
         self._exit = False
         self._entrance = False
         self._visited = False
+        self.__impassable = False
         self.row = row
         self.col = col
         self.north = False
@@ -145,10 +146,8 @@ class Room:
         """
         self._entrance = flag
 
-
     def set_pillar(self, pillar):
         self._pillar = pillar
-
 
     def __repr__(self):
         """
@@ -191,7 +190,6 @@ class Room:
         else:
             print("*****", end="")
 
-
     def set_health(self, add_potion):
         """
         Method is used to set health.
@@ -220,7 +218,7 @@ class Room:
         Method is used to test room is an exit or not.
         :return: True or False. By default, it returns False.
         """
-        return self.__exit
+        return self._exit
 
     def set_visited(self, visited):
         """
@@ -236,5 +234,3 @@ class Room:
         :return:
         """
         return self._pit
-
-

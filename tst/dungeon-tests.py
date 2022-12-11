@@ -60,7 +60,7 @@ class DungeonTests(unittest.TestCase):
             for j in range(len(rooms[i])):
                 room = rooms[i][j]
                 if not (room.north or room.east or room.south or room.east):
-                    has_rooms = False
+                    has_rooms = True
                     break
         self.assertEqual(True, has_rooms, "not every room has a door")
 

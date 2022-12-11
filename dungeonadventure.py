@@ -86,11 +86,17 @@ layout = [[(psg.Graph((360, 360), (0, 0), (360, 360), key='Graph'))],
           ]
 window = psg.Window('Dungeon Adventure', layout, resizable=True, finalize=True, return_keyboard_events=True)
 
+
 # current_x = 1
 # current_y = 1
 
 
 def checkEvents(event):
+    """
+    Method is used to check event which has been executed by user.
+    :param event: event name, such as 'Up', 'Down' or etc.
+    :return: one of the even name.
+    """
     move = ''
     if len(event) == 1:
         if ord(event) == 63232:  # UP
@@ -171,6 +177,13 @@ for n in random_list:
 
 
 def draw_image(x, y, my_map):
+    """
+    Method is used to generate an image based on x, y, and my_map all three parameters.
+    :param x: x coordinate. e.g.: current x coordinate.
+    :param y: y coordinate. e.g.: current y coordinate.
+    :param my_map: a 2D array created in class Dungeon.
+    :return: an visualized image.
+    """
     room = my_map.get_room()
     if 0 > x or x >= my_map.rows or 0 > y or y >= my_map.cols:
         return
@@ -225,6 +238,10 @@ def draw_image(x, y, my_map):
 
 
 def dungeonadventure_test():
+    """
+    Method is used to test dungeonadventure.
+    :return:
+    """
     current_x = 1
     current_y = 1
     draw_image(current_x, current_y, my_map)

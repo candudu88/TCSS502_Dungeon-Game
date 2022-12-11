@@ -1,5 +1,10 @@
 import random
+
+
 class Adventurer:
+    """
+    class Adventurer is used to interact with class Dungeon.
+    """
     def __init__(self, name, healing_potions=1, vision_potions=1):
         self._name = name
         self.hit_point = random.randrange(75, 100)
@@ -10,32 +15,50 @@ class Adventurer:
         self.pillar_I = False
         self.pillar_P = False
 
-
-
     def get_name(self):
+        """
+        Method is used to get a name when passed in.
+        :return: name passed in.
+        """
         return self._name
 
     def add_healing_potion(self):
+        """
+        Method is used to add healing potion if user hit healing potion.
+        :return: healing potions
+        """
         self._number_healing_potions += 1
 
     def use_healing_potion(self):
+        """
+        Method is used track if user uses healing potion.
+        :return: updated healing potions.
+        """
         if self._number_healing_potions > 0:
             self._number_healing_potions -= 1
 
     def add_vision(self):
+        """
+        Method is used to add vision potions.
+        :return: vision potions.
+        """
         self._number_vision_potions += 1
 
     def use_vision_potion(self):
+        """
+        Method is used to track if user uses vision potion.
+        :return: updated vision potions.
+        """
         if self._number_vision_potions > 0:
             self._number_vision_potions -= 1
 
     def __str__(self):
         """This method overrides the version from the object class and is called when you print a Adventurer"""
         res = "Name: " + str(self._name) + "\n" \
-               + "Hit point: " + str(self.hit_point) + "\n" \
-               + "Total Healing Potion: " + str(self._number_healing_potions) + "\n" \
-               + "Total Vision Potion: " + str(self._number_vision_potions) + "\n" \
-               + "List of Pillars Pieces Found: "
+              + "Hit point: " + str(self.hit_point) + "\n" \
+              + "Total Healing Potion: " + str(self._number_healing_potions) + "\n" \
+              + "Total Vision Potion: " + str(self._number_vision_potions) + "\n" \
+              + "List of Pillars Pieces Found: "
         if self.pillar_A:
             res = res + "Abstraction "
         if self.pillar_E:
@@ -46,7 +69,6 @@ class Adventurer:
             res = res + "Polymorphism "
         res = res + "\n\n"
         return res
-
 
 
 ad = Adventurer("warrior")

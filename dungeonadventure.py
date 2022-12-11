@@ -170,7 +170,7 @@ def random_assign_room_and_items(my_map):
             pit_count -= 1
         random_assign_healing_potion_list = random.sample(range(0, my_map.rows * my_map.cols - 1), healing_potion_count)
         for i in random_assign_healing_potion_list:
-            if healing_potion_count > 1:
+            if healing_potion_count > 0:
                 my_map.rooms[i // my_map.cols][i % my_map.rows].set_health_potion(True)
                 healing_potion_count -= 1
         random_assign_vision_potion_list = random.sample(range(0, my_map.rows * my_map.cols - 1), vision_potion_count)

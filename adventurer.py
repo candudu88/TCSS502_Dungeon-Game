@@ -21,7 +21,7 @@ class Adventurer:
         Method is used to get a name when passed in.
         :return: name passed in.
         """
-        return self._name
+        return str(self._name)
 
     def set_number_healing_potions(self, cnt):
         self._number_healing_potions = cnt
@@ -76,8 +76,8 @@ class Adventurer:
             self._number_vision_potions -= 1
 
     def damage_by_pit(self):
-        if self.hit_point > 0:
-            self.hit_point -= random.randint(1, 20)
+        damage = random.randint(1, 20)
+        self.hit_point = max(0, self.hit_point - damage)
 
     def __str__(self):
         """This method overrides the version from the object class and is called when you print a Adventurer"""

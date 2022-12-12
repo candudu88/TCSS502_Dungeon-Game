@@ -1,6 +1,6 @@
 # TCSS502_Dungeon-Game
 
-This is an adventure game where a hero is randomly placed within a dungeon, which is randomly generated. The adventurer needs to find the four Pillars of OO (Abstraction, Encapsulation, Inheritance, and Polymorphism) and take them to the exit to win the game.
+This is an adventure game where a hero explores a dungeon. The adventurer needs to find the four Pillars of OO (Abstraction, Encapsulation, Inheritance, and Polymorphism) to win the game.
 
 Under dungeonadventure.py run the code 
 Your goal:

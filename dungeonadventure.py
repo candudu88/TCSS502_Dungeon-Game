@@ -70,7 +70,6 @@ def intro():
           "\n")
 
 
-
 def ask_to_play():
     choice = input("Your choice: ")
     while not (choice.startswith("c") or choice.startswith("q")):
@@ -91,9 +90,18 @@ def ask_for_name():
 
 
 def ask_for_input_size():
-    maze_size = input("Please input the maze a size range from 6 - 12:    ")
-    return int(maze_size)
-
+    while True:
+        try:
+            maze_size = int(input("Please input the maze a size range from 6 - 12:    "))
+        except ValueError:  # just catch the exceptions you know!
+            print
+            'That\'s not a number!'
+        else:
+            if 6 <= maze_size <= 12:  # this is faster
+                break
+            else:
+                print("Out of range. Try input again")
+    return maze_size
 
 
 def checkEvents(event):

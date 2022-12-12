@@ -5,9 +5,9 @@ Jesse Flores
 
 
 2. Time it took each person to work on assignment
-Ji Lu                  	 10 hours
+Ji Lu                  	 12 hours
 Xiying Long              20 hours
-Jesse Flores                hours
+Jesse Flores             16 hours
 
 
 3. What each person worked on

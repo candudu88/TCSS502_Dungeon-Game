@@ -25,21 +25,21 @@ class RoomTests(unittest.TestCase):
                        "*****\n"
         self.assertEqual(expected_str, str(room), "expected format for str of Room did not match")
 
-    def test_room_str_with_health_potion(self):
+    def test_room_str_with_health(self):
         """Test string representation of Room with health potion has correct format"""
         room = Room(0, 0)
-        room.set_health_potion(True)
+        room.set_health(True)
         expected_str = "*****\n" \
                        "* H *\n" \
                        "*****\n"
         self.assertEqual(expected_str, str(room), "expected format for str of Room with health potion did not match")
 
-    def test_room_str_with_vision_potion(self):
+    def test_room_str_with_vision(self):
         """Test string representation of Room with health potion has correct format"""
         room = Room(0, 0)
-        room.set_vision_potion(True)
+        room.set_vision(True)
         expected_str = "*****\n" \
-                       "* V *\n" \
+                       "*   *\n" \
                        "*****\n"
         self.assertEqual(expected_str, str(room), "expected format for str of Room with vision potion did not match")
 
@@ -79,23 +79,23 @@ class RoomTests(unittest.TestCase):
                        "*****\n"
         self.assertEqual(expected_str, str(room), "expected format for str of Room with entrance did not match")
 
-    def test_room_str_with_health(self):
+    def test_room_str_with_health_potion(self):
         """Test string representation of Room with health potion has correct format"""
         room = Room(0, 0)
-        room.set_health(True)
+        room.set_health_potion(True)
         expected_str = "*****\n" \
                        "* H *\n" \
                        "*****\n"
         self.assertEqual(expected_str, str(room), "expected format for str of Room with health potion did not match")
 
-    # def test_room_str_with_vision(self):
-    #     """Test string representation of Room with vision potion has correct format"""
-    #     room = Room(0, 0)
-    #     room.set_vision(True)
-    #     expected_str = "*****\n" \
-    #                    "* V *\n" \
-    #                    "*****\n"
-    #     self.assertEqual(expected_str, str(room), "expected format for str of Room with vision potion did not match")
+    def test_room_str_with_vision_potion(self):
+        """Test string representation of Room with vision potion has correct format"""
+        room = Room(0, 0)
+        room.set_vision_potion(True)
+        expected_str = "*****\n" \
+                       "* V *\n" \
+                       "*****\n"
+        self.assertEqual(expected_str, str(room), "expected format for str of Room with vision potion did not match")
 
     def test_get_health_potion(self):
         """Test get_health_potion method of Room"""
@@ -167,21 +167,6 @@ class RoomTests(unittest.TestCase):
         """Test repr of Room to be the same as str"""
         room = Room(0, 0)
         self.assertEqual(str(room), repr(room), "expected repr to be the same as str")
-
-    def test_draw_top(self):
-        """Test print statement of draw_top method of Room"""
-        room = Room(0, 0)
-        # test print statements
-
-    def test_draw_middle(self):
-        """Test print statement of draw_top method of Room"""
-        room = Room(0, 0)
-        # test print statements
-
-    def test_draw_bottom(self):
-        """Test print statement of draw_bottom method of Room"""
-        room = Room(0, 0)
-        # test print statements
 
     def test_set_health(self):
         """Test set_health method of Room"""

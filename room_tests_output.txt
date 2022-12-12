@@ -1,10 +1,18 @@
 C:\Users\Ji\AppData\Local\Programs\Python\Python39\python.exe "C:/Program Files/JetBrains/PyCharm 2022.2.2/plugins/python/helpers/pycharm/_jb_unittest_runner.py" --path C:\Users\Ji\PycharmProjects\502pythonProject\TCSS502_Dungeon-Game\tst\room-tests.py 
+<<<<<<< HEAD
 Testing started at 9:20 PM ...
+=======
+Testing started at 9:27 PM ...
+>>>>>>> cede30a2511ecd149c31a8d0626d3e99b5a23727
 Launching unittests with arguments python -m unittest C:\Users\Ji\PycharmProjects\502pythonProject\TCSS502_Dungeon-Game\tst\room-tests.py in C:\Users\Ji\PycharmProjects\502pythonProject\TCSS502_Dungeon-Game\tst
 
 
 
+<<<<<<< HEAD
 Ran 31 tests in 0.011s
+=======
+Ran 29 tests in 0.021s
+>>>>>>> cede30a2511ecd149c31a8d0626d3e99b5a23727
 
 OK
 

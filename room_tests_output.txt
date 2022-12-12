@@ -4,7 +4,7 @@ Launching unittests with arguments python -m unittest C:\Users\Ji\PycharmProject
 
 
 
-Ran 24 tests in 0.009s
+Ran 31 tests in 0.022s
 
 OK
 

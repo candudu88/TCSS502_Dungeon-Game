@@ -161,7 +161,7 @@ class RoomTests(unittest.TestCase):
         """Test set_pillar method of Room"""
         room = Room(0, 0)
         room.set_pillar("Encapsulation")
-        self.assertEqual("Encapsulation", room.get_pillar(), "expected pillar of \"A\" in Room")
+        self.assertEqual("Encapsulation", room.get_pillar(), "expected pillar of \"Encapsulation\" in Room")
 
     def test_room_repr(self):
         """Test repr of Room to be the same as str"""

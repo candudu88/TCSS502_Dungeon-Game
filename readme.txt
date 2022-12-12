@@ -1,5 +1,3 @@
-
-
 1. Team Members:
 Ji Lu
 Xiying Long
@@ -7,7 +5,7 @@ Jesse Flores
 
 
 2. Time it took each person to work on assignment
-Ji Lu                  	    hours
+Ji Lu                  	 10 hours
 Xiying Long              20 hours
 Jesse Flores                hours
 

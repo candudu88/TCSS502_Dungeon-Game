@@ -8,12 +8,13 @@ Jesse Flores
 
 2. Time it took each person to work on assignment
 Ji Lu                  	    hours
-Xiying Long                hours
+Xiying Long              20 hours
 Jesse Flores                hours
 
 
 3. What each person worked on
-Each team member is working on each class. 
+Each team member is working on each class, unit test, UML and testing.
+We have created git repo for the team work, and we discuss what need to improve and what bugs need to fix together via slack
 
 4. Any shortcomings/concerns you have with the state of the program
 No shortcoming
